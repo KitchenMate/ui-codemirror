@@ -1,23 +1,12 @@
-/*global module */
+/*global module, exports */
 'use strict';
 
-(function(factory) {
-  var moduleName = 'ui.codemirror';
-  if (typeof module === 'object' && module.exports) {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = moduleName;
-    factory(moduleName);
-  } else {
-    factory(moduleName);
-  }
-}(function(moduleName) {
+(function() {
 
   /**
    * Binds a CodeMirror widget to a <textarea> element.
    */
-  angular.module(moduleName, [])
+  angular.module('ui.codemirror', [])
     .constant('uiCodemirrorConfig', {})
     .directive('uiCodemirror', ['$timeout', 'uiCodemirrorConfig', uiCodemirrorDirective]);
 
@@ -171,4 +160,8 @@
     }
 
   }
-}));
+}());
+
+if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.exports === exports) {
+  module.exports = 'ui.codemirror';
+}
